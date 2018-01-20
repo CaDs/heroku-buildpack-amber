@@ -77,7 +77,7 @@ if [ ! -e "$amber_executable" ]; then
       crystal deps update
       mkdir -p $BUILD_DIR/bin
       echo -e "\n"
-      crystal build --no-debug -o $BUILD_DIR/bin/amber $BUILD_DIR/lib/amber/src/amber/cli.cr
+      crystal build --release --no-debug -o $BUILD_DIR/bin/amber $BUILD_DIR/lib/amber/src/amber/cli.cr
       mkdir -p $CACHE_DIR/bin/
       cp -R $BUILD_DIR/bin/amber $CACHE_DIR/bin/
       cd $ENV_DIR
