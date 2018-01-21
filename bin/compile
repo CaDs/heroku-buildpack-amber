@@ -62,6 +62,7 @@ PATH="${PATH}:${CRYSTAL_DIR}/bin"
 
 # Build the Amber project
 start "Install project dependencies"
+  echo "Installing dependencies \n\n"
   cd $BUILD_DIR
   echo -e "\n"
   AMBER_ENV=production shards install
