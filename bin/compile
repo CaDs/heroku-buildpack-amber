@@ -62,10 +62,11 @@ PATH="${PATH}:${CRYSTAL_DIR}/bin"
 
 # Build the Amber project
 start "Install project dependencies"
-  echo "Installing dependencies \n\n"
+  echo "Installing dependencies"
+  echo -e "\n"
   cd $BUILD_DIR
   echo -e "\n"
-  AMBER_ENV=production shards install
+  crystal deps install --production
 finished
 
 amber_executable=$CACHE_DIR/bin/amber
@@ -75,7 +76,7 @@ if [ ! -e "$amber_executable" ]; then
       cd $BUILD_DIR/lib/amber
       sed -in "4d" $BUILD_DIR/lib/amber/src/amber/cli/commands/database.cr
       sed -in "68,70d" $BUILD_DIR/lib/amber/shard.yml
-      AMBER_ENV=production shards update
+      crystal deps update --production
       mkdir -p $BUILD_DIR/bin
       echo -e "\n"
       crystal build --no-debug --stats -o $BUILD_DIR/bin/amber $BUILD_DIR/lib/amber/src/amber/cli.cr
