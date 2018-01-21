@@ -62,6 +62,7 @@ PATH="${PATH}:${CRYSTAL_DIR}/bin"
 
 # Build the Amber project
 start "Install project dependencies"
+  echo "CaDs Version"
   cd $BUILD_DIR
   echo -e "\n"
   shards install --production
